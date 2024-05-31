@@ -1,7 +1,8 @@
 export const mockData = [
   {
     id: 1,
-    name: 'Иванов Иван Иванович',
+    firstName: 'Иван Иванович',
+    lastName: 'Иванов',
     avatar: '/avatar.png',
     link: '/ivanov-ivan',
     position: 'Junior UI/UX designer',
@@ -51,7 +52,8 @@ export const mockData = [
   },
   {
     id: 1,
-    name: 'Иванов Иван Иванович',
+    firstName: 'Петр Петрович',
+    lastName: 'Петров',
     avatar: '/avatar.png',
     link: '/petrov-petr',
     position: 'Junior UI/UX designer',
