@@ -17,7 +17,7 @@ export default function Home() {
           <Image src='chevron-left.svg' alt='назад' width={24} height={24} />
           Вернуться к сотрудникам
         </a>
-        <div className='py-8 px-4 bg-gray-800 md:px-10  md:pt-10 md:pb-5 rounded-xl'>
+        <div className='mb-4 py-8 px-4 bg-gray-800 md:px-10  md:pt-10 md:pb-5 rounded-xl'>
           <div className='max-w-screen-2xl  mx-auto md:flex'>
             <Image
               className='m-auto pb-4 md:ms-0 md:me-12 md:mt-0'
@@ -58,6 +58,27 @@ export default function Home() {
               Оборудование
             </button>
           </div>
+        </div>
+        <div className='mb-4 md:me-4 py-8 px-4 bg-gray-800 md:px-10  md:px-8 rounded-xl max-w-lg'>
+          <div className='flex'>
+            <p className='me-2 text-base md:text-2xl'>Статистика</p>
+            <Image src='/info.svg' width={24} height={24} alt='' title='1 раб. месяц = 3 дня отпуска' />
+          </div>
+          <div className='my-4'>График</div>
+          <ul className='text-base'>
+            <li className='mb-2 flex py-3 px-2.5 border border-gray-500 rounded-full'>
+              <Image className='me-2' src='/badge-green.svg' width={6} height={6} alt='' />
+              Доступно сейчас<span className='ms-auto me-0'>{user.statistics.available} дня</span>
+            </li>
+            <li className='mb-2 flex py-3 px-2.5 border border-gray-500 rounded-full'>
+              <Image className='me-2' src='/badge-yellow.svg' width={6} height={6} alt='' />
+              Запланировано<span className='ms-auto me-0'>{user.statistics.planned} дней</span>
+            </li>
+            <li className='mb-2 flex py-3 px-2.5 border border-gray-500 rounded-full'>
+              <Image className='me-2' src='/badge-red.svg' width={6} height={6} alt='' />
+              Использовано/недоступно<span className='ms-auto me-0'>{user.statistics.used} дня</span>
+            </li>
+          </ul>
         </div>
       </main>
     </>
