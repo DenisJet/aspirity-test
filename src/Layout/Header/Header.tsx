@@ -1,17 +1,29 @@
+import BurgerButton from '@/components/BurgerButton/BurgerButton';
+import Button from '@/components/Button/Button';
+import CustomSelect from '@/components/CustomSelect/CustomSelect';
 import Image from 'next/image';
 
-export default function Header(): JSX.Element {
+export default function Header() {
   return (
-    <header>
+    <header className='max-w-7xl mx-auto px-4 py-6 flex'>
       <div>
         <div className='md:hidden'>
-          <Image src='Banner-767x500.webp' height={500} width={767} alt='Логотип компании' />
+          <Image src='/logo-mobile.png' height={30} width={135} alt='Логотип компании' />
         </div>
-        <div className='hidden md:inline-flex lg:hidden'>
-          <Image src='Banner-1023x500.webp' height={500} width={1023} alt='Логотип компании' />
+        <div className='hidden md:inline-flex'>
+          <Image src='/logo-desktop.png' height={40} width={180} alt='Логотип компании' />
         </div>
       </div>
-      header
+      <div className='flex ms-auto me-0 gap-x-2 items-center'>
+        <div className='hidden md:block flex'>
+          <div className='me-2 inline-block'>
+            <Button>Создать счет</Button>
+          </div>
+          <Button>Корзина</Button>
+        </div>
+        <CustomSelect />
+        <BurgerButton />
+      </div>
     </header>
   );
 }

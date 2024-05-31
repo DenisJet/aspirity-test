@@ -1,5 +1,5 @@
 import Image from 'next/image';
 
 export default function Home() {
-  return <main className=''>Main</main>;
+  return <main className='max-w-7xl mx-auto flex'>Main</main>;
 }
