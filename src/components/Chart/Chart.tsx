@@ -1,20 +1,6 @@
 import { ArcElement, Legend, Tooltip } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
 
-//ChartJS.register(ArcElement, Tooltip, Legend);
-
-// const data = {
-//   datasets: [
-//     {
-//       data: [32, 4, 8],
-//       backgroundColor: ['#25824F', '#DB4546', '#FFB649'],
-//       hoverBackgroundColor: ['#25824F', '#DB4546', '#FFB649'],
-//       borderWidth: 0,
-//       weight: 2,
-//     },
-//   ],
-// };
-
 const textCenter = {
   id: 'textCenter',
   beforeDatasetsDraw(chart: any) {
@@ -32,7 +18,7 @@ const textCenter = {
   },
 };
 
-export const Chart = ({ data }) => {
+export const Chart = ({ data }: any) => {
   return (
     <div>
       <Doughnut data={data} width={160} height={160} plugins={[textCenter]} />
