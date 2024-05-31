@@ -38,6 +38,26 @@ export default function Home() {
               </div>
             </div>
           </div>
+          <div className='inline-block'>
+            <button
+              className='bg-gray-800 uppercase text-sm font-semibold py-2.5 px-4 border-b-2 border-gray-700'
+              type='button'
+            >
+              Основная информация
+            </button>
+            <button
+              className='bg-gray-800 uppercase text-sm font-semibold py-2.5 px-4 border-b-2 border-indigo-500'
+              type='button'
+            >
+              Отпуск
+            </button>
+            <button
+              className='bg-gray-800 uppercase text-sm font-semibold py-2.5 px-4 border-b-2 border-gray-700'
+              type='button'
+            >
+              Оборудование
+            </button>
+          </div>
         </div>
       </main>
     </>
