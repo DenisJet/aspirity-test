@@ -20,10 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='ru'>
-      <body className={poppins.className}>
-        <Header />
-        {children}
-      </body>
+      <body className={poppins.className}>{children}</body>
     </html>
   );
 }
