@@ -10,7 +10,7 @@ import BurgerButton from '@/components/BurgerButton/BurgerButton';
 
 const user = mockData[0];
 
-const data = {
+const chartData = {
   datasets: [
     {
       data: [user.statistics.available, user.statistics.used, user.statistics.planned],
@@ -20,6 +20,10 @@ const data = {
       weight: 2,
     },
   ],
+};
+
+const chartOptions = {
+  cutout: '90%',
 };
 
 export default function Home() {
@@ -102,7 +106,7 @@ export default function Home() {
             <Image src='/info.svg' width={24} height={24} alt='' title='1 раб. месяц = 3 дня отпуска' />
           </div>
           <div className='my-4 max-w-80 mx-auto'>
-            <Chart data={data} />
+            <Chart data={chartData} options={chartOptions} />
           </div>
           <ul className='text-base'>
             <li className='mb-2 flex py-3 px-2.5 border border-gray-500 rounded-full'>
