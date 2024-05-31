@@ -5,7 +5,7 @@ import Image from 'next/image';
 
 export default function Header() {
   return (
-    <header className='max-w-7xl mx-auto px-4 py-6 flex items-center'>
+    <header className='max-w-screen-2xl 2xl:px-5 mx-auto px-4 py-6 flex items-center'>
       <div>
         <div className='md:hidden'>
           <Image src='/logo-mobile.png' height={30} width={135} alt='Логотип компании' />
