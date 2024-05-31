@@ -38,9 +38,9 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className='inline-block'>
+          <div className='flex overflow-hidden'>
             <button
-              className='bg-gray-800 uppercase text-sm font-semibold py-2.5 px-4 border-b-2 border-gray-700'
+              className='bg-gray-800 uppercase text-sm font-semibold py-2.5 px-4 border-b-2 border-gray-700 whitespace-nowrap'
               type='button'
             >
               Основная информация
