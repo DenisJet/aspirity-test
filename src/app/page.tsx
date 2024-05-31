@@ -1,8 +1,23 @@
+'use client';
+import { Chart } from '@/components/Chart/Chart';
 import Header from '@/Layout/Header/Header';
 import { mockData } from '@/mock-json';
 import Image from 'next/image';
+import 'chart.js/auto';
 
 const user = mockData[0];
+
+const data = {
+  datasets: [
+    {
+      data: [user.statistics.available, user.statistics.used, user.statistics.planned],
+      backgroundColor: ['#25824F', '#DB4546', '#FFB649'],
+      hoverBackgroundColor: ['#25824F', '#DB4546', '#FFB649'],
+      borderWidth: 0,
+      weight: 2,
+    },
+  ],
+};
 
 export default function Home() {
   return (
@@ -64,7 +79,9 @@ export default function Home() {
             <p className='me-2 text-base md:text-2xl'>Статистика</p>
             <Image src='/info.svg' width={24} height={24} alt='' title='1 раб. месяц = 3 дня отпуска' />
           </div>
-          <div className='my-4'>График</div>
+          <div className='my-4'>
+            <Chart data={data} />
+          </div>
           <ul className='text-base'>
             <li className='mb-2 flex py-3 px-2.5 border border-gray-500 rounded-full'>
               <Image className='me-2' src='/badge-green.svg' width={6} height={6} alt='' />
