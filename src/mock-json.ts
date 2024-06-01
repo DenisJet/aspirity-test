@@ -72,7 +72,7 @@ export const mockData = [
     ],
   },
   {
-    id: 1,
+    id: 2,
     firstName: 'Петр Петрович',
     lastName: 'Петров',
     avatar: '/avatar.png',
