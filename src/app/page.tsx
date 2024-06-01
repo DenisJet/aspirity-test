@@ -7,9 +7,11 @@ import 'chart.js/auto';
 import Button from '@/components/Button/Button';
 import CustomSelect from '@/components/CustomSelect/CustomSelect';
 import BurgerButton from '@/components/BurgerButton/BurgerButton';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import HistoryList from '@/components/HistoryList/HistoryList';
 import DesktopHistoryList from '@/components/DesktopHistoryList/DesktopHistoryList';
+import { ModalContext } from '@/context/modal.context';
+import Modal from '@/components/Modal/Modal';
 
 const user = mockData[0];
 
@@ -20,26 +22,27 @@ const chartData = {
       backgroundColor: ['#25824F', '#DB4546', '#FFB649'],
       hoverBackgroundColor: ['#25824F', '#DB4546', '#FFB649'],
       borderWidth: 0,
-      weight: 2,
+      weight: 3,
     },
   ],
 };
 
 const chartOptions = {
-  cutout: '90%',
-  radius: '88%',
+  cutout: '80%',
+  radius: '82%',
   hoverOffset: 35,
   hoverBorderWidth: 4,
 };
 
 const chartActiveOptions = {
   cutout: '90%',
-  radius: '88%',
+  radius: '50%',
   hoverOffset: 35,
   hoverBorderWidth: 4,
 };
 
 export default function Home() {
+  const { isOpen, setIsOpen } = useContext(ModalContext);
   const [active, setActive] = useState();
 
   const handleMouseEnter = () => {};
@@ -96,7 +99,7 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className='flex overflow-hidden'>
+          <div className='flex overflow-auto '>
             <button
               className='bg-gray-800 uppercase text-sm font-semibold py-2.5 px-4 border-b-2 border-gray-700 whitespace-nowrap'
               type='button'
@@ -123,7 +126,7 @@ export default function Home() {
               <p className='me-2 text-base md:text-2xl'>Статистика</p>
               <Image src='/info.svg' width={24} height={24} alt='' title='1 раб. месяц = 3 дня отпуска' />
             </div>
-            <div className='my-4 max-w-80 mx-auto'>
+            <div className='my-1 max-w-80 mx-auto lg:w-48'>
               <Chart data={chartData} options={chartOptions} />
             </div>
             <ul className='text-base'>
@@ -151,19 +154,20 @@ export default function Home() {
           <div className='mb-4 py-8 px-4 bg-gray-800 md:px-10  md:px-8 rounded-xl w-full'>
             <div className='flex mb-4'>
               <span className='md:text-2xl'>История отпусков</span>
-              <button className='ms-auto me-0 text-sm text-gray-500' type='button'>
+              <button className='ms-auto me-0 text-sm text-gray-500' type='button' onClick={() => setIsOpen(true)}>
                 Посмотреть все
               </button>
             </div>
             <div className='lg:hidden'>
-              <HistoryList historyList={user.vacationHistory} />
+              <HistoryList historyList={user.vacationHistory.slice(0, 5)} />
             </div>
             <div className='hidden lg:block'>
-              <DesktopHistoryList historyList={user.vacationHistory} />
+              <DesktopHistoryList historyList={user.vacationHistory.slice(0, 5)} />
             </div>
           </div>
         </div>
       </main>
+      <Modal historyList={user.vacationHistory} />
     </>
   );
 }

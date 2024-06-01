@@ -21,7 +21,7 @@ const textCenter = {
 export const Chart = ({ data, options }: any) => {
   return (
     <div>
-      <Doughnut data={data} width={160} height={160} plugins={[textCenter]} options={options} />
+      <Doughnut data={data} width={140} height={140} plugins={[textCenter]} options={options} />
     </div>
   );
 };

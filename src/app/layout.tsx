@@ -2,6 +2,8 @@ import type { Metadata } from 'next';
 import { Poppins } from 'next/font/google';
 import './globals.css';
 import Header from '@/Layout/Header/Header';
+import Modal from '@/components/Modal/Modal';
+import { ModalContextProvider } from '@/context/modal.context';
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -20,7 +22,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='ru'>
-      <body className={poppins.className}>{children}</body>
+      <body className={poppins.className}>
+        <ModalContextProvider>{children}</ModalContextProvider>
+      </body>
     </html>
   );
 }
