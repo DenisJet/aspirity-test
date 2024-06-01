@@ -1,5 +1,6 @@
-import { ArcElement, Legend, Tooltip } from 'chart.js';
-import { Doughnut } from 'react-chartjs-2';
+import { Doughnut, getElementAtEvent } from 'react-chartjs-2';
+import { useRef } from 'react';
+import { Tooltip } from 'chart.js';
 
 const textCenter = {
   id: 'textCenter',
@@ -19,9 +20,5 @@ const textCenter = {
 };
 
 export const Chart = ({ data, options }: any) => {
-  return (
-    <div>
-      <Doughnut data={data} width={140} height={140} plugins={[textCenter]} options={options} />
-    </div>
-  );
+  return <Doughnut data={data} width={140} height={140} plugins={[textCenter]} options={options} />;
 };

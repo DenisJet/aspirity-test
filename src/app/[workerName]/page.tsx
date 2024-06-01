@@ -14,7 +14,6 @@ import Modal from '@/components/Modal/Modal';
 
 export default function Home({ params }: { params: { workerName: string } }) {
   const { isOpen, setIsOpen } = useContext(ModalContext);
-  const [active, setActive] = useState();
 
   const user = mockData.find((user) => user.link.split('/')[1] == String(params.workerName));
 
@@ -35,17 +34,6 @@ export default function Home({ params }: { params: { workerName: string } }) {
     radius: '82%',
     hoverOffset: 35,
     hoverBorderWidth: 4,
-  };
-
-  const chartActiveOptions = {
-    cutout: '90%',
-    radius: '50%',
-    hoverOffset: 35,
-    hoverBorderWidth: 4,
-  };
-
-  const handleMouseEnter = () => {
-    chartActiveOptions.hoverOffset = 15;
   };
 
   return (
@@ -133,15 +121,15 @@ export default function Home({ params }: { params: { workerName: string } }) {
                   <Chart data={chartData} options={chartOptions} />
                 </div>
                 <ul className='text-base'>
-                  <li className='mb-2 flex py-3 px-2.5 border border-gray-500 rounded-full' onClick={handleMouseEnter}>
+                  <li className='mb-2 flex py-3 px-2.5 border border-gray-700 rounded-full hover:border-gray-100'>
                     <Image className='me-2' src='/badge-green.svg' width={6} height={6} alt='' />
                     Доступно сейчас<span className='ms-auto me-0'>{user.statistics.available} дня</span>
                   </li>
-                  <li className='mb-2 flex py-3 px-2.5 border border-gray-500 rounded-full'>
+                  <li className='mb-2 flex py-3 px-2.5 border border-gray-700 rounded-full hover:border-gray-100'>
                     <Image className='me-2' src='/badge-yellow.svg' width={6} height={6} alt='' />
                     Запланировано<span className='ms-auto me-0'>{user.statistics.planned} дней</span>
                   </li>
-                  <li className='mb-2 flex py-3 px-2.5 border border-gray-500 rounded-full'>
+                  <li className='mb-2 flex py-3 px-2.5 border border-gray-700 rounded-full hover:border-gray-100'>
                     <Image className='me-2' src='/badge-red.svg' width={6} height={6} alt='' />
                     Использовано/недоступно<span className='ms-auto me-0'>{user.statistics.used} дня</span>
                   </li>

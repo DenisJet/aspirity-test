@@ -7,7 +7,7 @@ const user = mockData;
 export default function Home() {
   return (
     <main className='m-5 p-5 max-w-screen-2xl mx-auto '>
-      <p className='mb-4'>Список специалистов</p>
+      <p className='mb-4'>Список сотрудников</p>
       <ul className='ps-4'>
         {user.map((user) => {
           return (
