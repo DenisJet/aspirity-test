@@ -7,6 +7,7 @@ import 'chart.js/auto';
 import Button from '@/components/Button/Button';
 import CustomSelect from '@/components/CustomSelect/CustomSelect';
 import BurgerButton from '@/components/BurgerButton/BurgerButton';
+import { useState } from 'react';
 
 const user = mockData[0];
 
@@ -24,9 +25,23 @@ const chartData = {
 
 const chartOptions = {
   cutout: '90%',
+  radius: '88%',
+  hoverOffset: 35,
+  hoverBorderWidth: 4,
+};
+
+const chartActiveOptions = {
+  cutout: '90%',
+  radius: '88%',
+  hoverOffset: 35,
+  hoverBorderWidth: 4,
 };
 
 export default function Home() {
+  const [active, setActive] = useState();
+
+  const handleMouseEnter = () => {};
+
   return (
     <>
       <header className='max-w-screen-2xl 2xl:px-5 mx-auto px-4 py-6 flex items-center'>
@@ -110,7 +125,14 @@ export default function Home() {
           </div>
           <ul className='text-base'>
             <li className='mb-2 flex py-3 px-2.5 border border-gray-500 rounded-full'>
-              <Image className='me-2' src='/badge-green.svg' width={6} height={6} alt='' />
+              <Image
+                className='me-2'
+                src='/badge-green.svg'
+                width={6}
+                height={6}
+                alt=''
+                onMouseEnter={handleMouseEnter}
+              />
               Доступно сейчас<span className='ms-auto me-0'>{user.statistics.available} дня</span>
             </li>
             <li className='mb-2 flex py-3 px-2.5 border border-gray-500 rounded-full'>

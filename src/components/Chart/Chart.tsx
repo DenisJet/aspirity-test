@@ -18,10 +18,10 @@ const textCenter = {
   },
 };
 
-export const Chart = ({ data }: any) => {
+export const Chart = ({ data, options }: any) => {
   return (
     <div>
-      <Doughnut data={data} width={160} height={160} plugins={[textCenter]} />
+      <Doughnut data={data} width={160} height={160} plugins={[textCenter]} options={options} />
     </div>
   );
 };
