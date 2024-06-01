@@ -1,6 +1,5 @@
 'use client';
 import { Chart } from '@/components/Chart/Chart';
-import Header from '@/Layout/Header/Header';
 import { mockData } from '@/mock-json';
 import Image from 'next/image';
 import 'chart.js/auto';
@@ -45,7 +44,9 @@ export default function Home() {
   const { isOpen, setIsOpen } = useContext(ModalContext);
   const [active, setActive] = useState();
 
-  const handleMouseEnter = () => {};
+  const handleMouseEnter = () => {
+    chartActiveOptions.hoverOffset = 15;
+  };
 
   return (
     <>
@@ -130,15 +131,8 @@ export default function Home() {
               <Chart data={chartData} options={chartOptions} />
             </div>
             <ul className='text-base'>
-              <li className='mb-2 flex py-3 px-2.5 border border-gray-500 rounded-full'>
-                <Image
-                  className='me-2'
-                  src='/badge-green.svg'
-                  width={6}
-                  height={6}
-                  alt=''
-                  onMouseEnter={handleMouseEnter}
-                />
+              <li className='mb-2 flex py-3 px-2.5 border border-gray-500 rounded-full' onClick={handleMouseEnter}>
+                <Image className='me-2' src='/badge-green.svg' width={6} height={6} alt='' />
                 Доступно сейчас<span className='ms-auto me-0'>{user.statistics.available} дня</span>
               </li>
               <li className='mb-2 flex py-3 px-2.5 border border-gray-500 rounded-full'>
