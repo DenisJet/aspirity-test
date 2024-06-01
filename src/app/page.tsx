@@ -8,6 +8,8 @@ import Button from '@/components/Button/Button';
 import CustomSelect from '@/components/CustomSelect/CustomSelect';
 import BurgerButton from '@/components/BurgerButton/BurgerButton';
 import { useState } from 'react';
+import HistoryList from '@/components/HistoryList/HistoryList';
+import DesktopHistoryList from '@/components/DesktopHistoryList/DesktopHistoryList';
 
 const user = mockData[0];
 
@@ -68,7 +70,7 @@ export default function Home() {
         <a
           href=''
           title='назад'
-          className='uppercase pb-2 2xl:px-5 flex items-center text-sm font-semibold text-gray-500'
+          className='uppercase mb-4 2xl:px-5 flex items-center text-sm font-semibold text-gray-500'
         >
           <Image src='chevron-left.svg' alt='назад' width={24} height={24} />
           Вернуться к сотрудникам
@@ -115,35 +117,51 @@ export default function Home() {
             </button>
           </div>
         </div>
-        <div className='mb-4 md:me-4 py-8 px-4 bg-gray-800 md:px-10  md:px-8 rounded-xl max-w-lg'>
-          <div className='flex'>
-            <p className='me-2 text-base md:text-2xl'>Статистика</p>
-            <Image src='/info.svg' width={24} height={24} alt='' title='1 раб. месяц = 3 дня отпуска' />
+        <div className='lg:flex'>
+          <div className='mb-4 lg:me-4 py-8 px-4 bg-gray-800 md:px-10  md:px-8 rounded-xl lg:w-2/4'>
+            <div className='flex'>
+              <p className='me-2 text-base md:text-2xl'>Статистика</p>
+              <Image src='/info.svg' width={24} height={24} alt='' title='1 раб. месяц = 3 дня отпуска' />
+            </div>
+            <div className='my-4 max-w-80 mx-auto'>
+              <Chart data={chartData} options={chartOptions} />
+            </div>
+            <ul className='text-base'>
+              <li className='mb-2 flex py-3 px-2.5 border border-gray-500 rounded-full'>
+                <Image
+                  className='me-2'
+                  src='/badge-green.svg'
+                  width={6}
+                  height={6}
+                  alt=''
+                  onMouseEnter={handleMouseEnter}
+                />
+                Доступно сейчас<span className='ms-auto me-0'>{user.statistics.available} дня</span>
+              </li>
+              <li className='mb-2 flex py-3 px-2.5 border border-gray-500 rounded-full'>
+                <Image className='me-2' src='/badge-yellow.svg' width={6} height={6} alt='' />
+                Запланировано<span className='ms-auto me-0'>{user.statistics.planned} дней</span>
+              </li>
+              <li className='mb-2 flex py-3 px-2.5 border border-gray-500 rounded-full'>
+                <Image className='me-2' src='/badge-red.svg' width={6} height={6} alt='' />
+                Использовано/недоступно<span className='ms-auto me-0'>{user.statistics.used} дня</span>
+              </li>
+            </ul>
           </div>
-          <div className='my-4 max-w-80 mx-auto'>
-            <Chart data={chartData} options={chartOptions} />
+          <div className='mb-4 py-8 px-4 bg-gray-800 md:px-10  md:px-8 rounded-xl w-full'>
+            <div className='flex mb-4'>
+              <span className='md:text-2xl'>История отпусков</span>
+              <button className='ms-auto me-0 text-sm text-gray-500' type='button'>
+                Посмотреть все
+              </button>
+            </div>
+            <div className='lg:hidden'>
+              <HistoryList historyList={user.vacationHistory} />
+            </div>
+            <div className='hidden lg:block'>
+              <DesktopHistoryList historyList={user.vacationHistory} />
+            </div>
           </div>
-          <ul className='text-base'>
-            <li className='mb-2 flex py-3 px-2.5 border border-gray-500 rounded-full'>
-              <Image
-                className='me-2'
-                src='/badge-green.svg'
-                width={6}
-                height={6}
-                alt=''
-                onMouseEnter={handleMouseEnter}
-              />
-              Доступно сейчас<span className='ms-auto me-0'>{user.statistics.available} дня</span>
-            </li>
-            <li className='mb-2 flex py-3 px-2.5 border border-gray-500 rounded-full'>
-              <Image className='me-2' src='/badge-yellow.svg' width={6} height={6} alt='' />
-              Запланировано<span className='ms-auto me-0'>{user.statistics.planned} дней</span>
-            </li>
-            <li className='mb-2 flex py-3 px-2.5 border border-gray-500 rounded-full'>
-              <Image className='me-2' src='/badge-red.svg' width={6} height={6} alt='' />
-              Использовано/недоступно<span className='ms-auto me-0'>{user.statistics.used} дня</span>
-            </li>
-          </ul>
         </div>
       </main>
     </>
