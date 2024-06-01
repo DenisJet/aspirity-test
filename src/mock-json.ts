@@ -80,9 +80,9 @@ export const mockData = [
     position: 'Junior UI/UX designer',
     address: 'Россия, Красноярск',
     statistics: {
-      available: 32,
-      planned: 8,
-      used: 4,
+      available: 43,
+      planned: 9,
+      used: 23,
     },
     vacationHistory: [
       {
